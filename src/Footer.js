@@ -22,8 +22,8 @@ function Footer() {
 
         />
         <div className="footer__songInfo">
-          <h4>Rakita Rakita</h4>
-          <p>Anirudh</p>
+          <h4>{`Rakita Rakita Rakita (From "Jagame Thandhiram")`}</h4>
+          <p>{`Santhosh Narayanan, Dhanush, Dhee - Rakita Rakita Rakita (From "Jagame Thandhiram")`}</p>
         </div>
       </div>
       <div className="footer__center">
