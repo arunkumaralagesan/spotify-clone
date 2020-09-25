@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains Spotify - UI clone.
+Tech used:
+  1. React
+  2. spotify-web-api ( To fetch playlists and tracks );
+  3. Includes spotify Authentication and fall back to our site.
 
 ## Available Scripts
 
