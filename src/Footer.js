@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
@@ -14,6 +14,7 @@ import { Grid, Slider } from '@material-ui/core';
 
 function Footer({ spotify }) {
   const [{ token, item, playing }, dispatch] = useDataLayerValue();
+  const [volume, setStateVolume] = useState(20);
 
   useEffect(() => {
     spotify.getMyCurrentPlaybackState().then((response) => {
@@ -74,6 +75,11 @@ function Footer({ spotify }) {
     });
   };
 
+  const setVolume = (volumePercent) => {
+    setStateVolume(volumePercent);
+    spotify.setVolume({ volume_percent: 20 });
+  };
+  
   return (
     <div className="footer">
       <div className="footer__left">
@@ -122,7 +128,15 @@ function Footer({ spotify }) {
             <VolumeDownIcon />
           </Grid>
           <Grid item xs>
-            <Slider aria-labelledby="continuous-slider" />
+            <Slider 
+              value={volume}
+              aria-labelledby="continuous-slider" 
+              min={0}
+              step={10}
+              max={100}
+              scale={(x) => x ** 10}
+              onChange={(e,value) => setVolume(value)}
+            />
           </Grid>
         </Grid>
       </div>
