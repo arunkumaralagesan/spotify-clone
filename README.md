@@ -5,7 +5,7 @@ This project contains Spotify - UI clone.
   3. Includes spotify Authentication and fall back to our site.
   
 ## Note
- UI can be experienced, songs and playlist switches can't be made.  
+ UI can be experienced. Songs can be played and playlist switches can be made (If logged in with premium account).  
 
 ## Available Scripts
 

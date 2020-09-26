@@ -6,8 +6,18 @@ import './Sidebar.css';
 import SidebarOption from './SidebarOption';
 import { useDataLayerValue } from './DataLayer';
 
-function SideBar() {
+function SideBar({ spotify }) {
   const [{ playlists }, dispatch ] = useDataLayerValue();
+
+  const getSongsInPlayList  = (uri) => {
+    spotify.getPlaylist(uri.split(":")[2]).then(response => {
+      dispatch({
+        type: 'SET_DISCOVER_WEEKLY',
+        discover_weekly: response,
+      });
+    })
+  }
+
   return (
     <div className="sidebar">
        <img
@@ -22,7 +32,7 @@ function SideBar() {
       <strong className="sidebar__title">PLAYLISTS </strong>
       <hr />
       {playlists?.items?.map(playlist => {
-        return <SidebarOption title={playlist.name} />;
+        return <SidebarOption title={playlist.name} getSongsInPlayList={getSongsInPlayList} uri={playlist.uri}/>;
       })}
     </div>
   )
